@@ -6,9 +6,8 @@ import { ListaDeEventosState } from '../../state/atom';
 import { useRecoilValue } from 'recoil';
 
 const ListaDeEventos: React.FC<{
-  aoAlterarStatus: (id: number) => void,
   aoFiltroAplicado: (data: Date | null) => void
-}> = ({ aoAlterarStatus, aoFiltroAplicado }) => {
+}> = ({ aoFiltroAplicado }) => {
 
   const eventos = useRecoilValue(ListaDeEventosState);
 
@@ -16,7 +15,7 @@ const ListaDeEventos: React.FC<{
     <Filtro aoFiltroAplicado={aoFiltroAplicado} />
     <div className={style.Scroll}>
       {eventos.map(evento => (
-        <Evento aoAlterarStatus={aoAlterarStatus} evento={evento} key={evento.id} />
+        <Evento evento={evento} key={evento.id} />
       ))}
     </div>
   </section>)
